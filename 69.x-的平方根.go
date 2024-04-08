@@ -46,7 +46,7 @@ package main
  * 
  * 
  */
-import "fmt"
+
 // @lc code=start
 import "math"
 func mySqrt(x int) int {
@@ -86,6 +86,3 @@ func fastInvSqrt(x float64) float64 {
 }
 // @lc code=end
 
-func main() {
-	fmt.Println(fastInvSqrt(4))
-}
