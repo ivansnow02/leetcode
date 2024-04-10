@@ -68,7 +68,7 @@ package main
 // @lc code=start
 func backspaceCompare(s string, t string) bool {
 	skipS, skipT := 0, 0
-	for sp, tp := len(s) - 1, len(t) - 1; sp >= 0 || tp >= 0; {
+	for sp, tp := len(s)-1, len(t)-1; sp >= 0 || tp >= 0; {
 		for sp >= 0 {
 			if s[sp] == '#' {
 				skipS++
