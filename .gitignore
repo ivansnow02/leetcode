@@ -1,3 +1,5 @@
 jsconfig.json
 
 .fake
+/.idea
+.iml
