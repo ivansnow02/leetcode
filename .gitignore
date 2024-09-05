@@ -2,4 +2,15 @@ jsconfig.json
 
 .fake
 /.idea
-.iml
+*.iml
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+/gradle
+
+*.kts
+gradlew
+*.bat
