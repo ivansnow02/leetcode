@@ -64,39 +64,61 @@ using namespace std;
  */
 class Solution {
 public:
-  bool isSymmetric(TreeNode *root) {
-    queue<TreeNode *> q;
-    if (root == nullptr) {
+  // bool isSymmetric(TreeNode *root) {
+  //   queue<TreeNode *> q;
+  //   if (root == nullptr) {
+  //     return true;
+  //   }
+  //   q.emplace(root);
+  //   while (!q.empty()) {
+  //     auto n = q.size();
+  //     vector<TreeNode *> v;
+  //     for (auto i = 0; i < n; i++) {
+  //       auto cur = q.front();
+  //       q.pop();
+  //       if (cur == nullptr) {
+  //         v.emplace_back(nullptr);
+  //         continue;
+  //       }
+  //       v.emplace_back(cur);
+  //       q.emplace(cur->left);
+  //       q.emplace(cur->right);
+  //     }
+  //     for (auto i = 0; i < v.size() / 2; i++) {
+  //       if (v[i] == nullptr && v[v.size() - 1 - i] == nullptr) {
+  //         continue;
+  //       }
+  //       if (v[i] == nullptr || v[v.size() - 1 - i] == nullptr) {
+  //         return false;
+  //       }
+  //       if (v[i]->val != v[v.size() - 1 - i]->val) {
+  //         return false;
+  //       }
+  //     }
+  //   }
+  //   return true;
+  // }
+
+  auto compare(const auto* left, const auto* right) -> decltype(auto) {
+    if (left == nullptr && right == nullptr)
       return true;
-    }
-    q.emplace(root);
-    while (!q.empty()) {
-      auto n = q.size();
-      vector<TreeNode *> v;
-      for (auto i = 0; i < n; i++) {
-        auto cur = q.front();
-        q.pop();
-        if (cur == nullptr) {
-          v.emplace_back(nullptr);
-          continue;
-        }
-        v.emplace_back(cur);
-        q.emplace(cur->left);
-        q.emplace(cur->right);
-      }
-      for (auto i = 0; i < v.size() / 2; i++) {
-        if (v[i] == nullptr && v[v.size() - 1 - i] == nullptr) {
-          continue;
-        }
-        if (v[i] == nullptr || v[v.size() - 1 - i] == nullptr) {
-          return false;
-        }
-        if (v[i]->val != v[v.size() - 1 - i]->val) {
-          return false;
-        }
-      }
-    }
-    return true;
+    else if (left == nullptr && right != nullptr)
+      return false;
+    else if (left != nullptr && right == nullptr)
+      return false;
+    else if (left->val != right->val)
+      return false;
+
+    auto outside = compare(left->left, right->right);
+    auto inside = compare(left->right, right->left);
+
+    return outside && inside;
+  }
+
+  bool isSymmetric(TreeNode *root) {
+    if (root == NULL)
+      return true;
+    return compare(root->left, root->right);
   }
 };
 // @lc code=end
