@@ -16,3 +16,4 @@ gradlew
 *.bat
 
 /.vscode
+*.log
