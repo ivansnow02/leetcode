@@ -82,7 +82,7 @@ public:
         if (nums.size() == 2) {
             return max(nums[0], nums[1]);
         }
-        vector<int> dp(nums.size() + 1, 0);
+        vector<int> dp(nums.size() + 1, 0) ;
 
         auto robByRange = [&](int r, int l) -> int {
             fill(dp.begin(), dp.end(), 0);
