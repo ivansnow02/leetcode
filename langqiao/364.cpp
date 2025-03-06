@@ -48,22 +48,36 @@ int main() {
     }
 
     auto max_remove_num = [&](i64 d) -> i64 {
-        i64 cnt = 0, cur_pos = 0, cur_i = 0;
+        i64 removed_cnt = 0, cur_pos = 0;
         for (int i = 0; i < N; i++) {
-            if (stone_pos[i] - cur_pos < d){
-                cnt++;
+            if (stone_pos[i] - cur_pos < d) {
+
+                removed_cnt++;
             }
-            else if (stone_pos[i] - cur_pos > d){
+            else {
                 cur_pos = stone_pos[i];
-                cur_i = i;
-                if (cur_i == i - 2) {
-                    cnt--;
-                }
             }
         }
-        return cnt;
+        // 最后判断终点与最后保留石头的距离
+        if (L - cur_pos < d)
+            removed_cnt++;
+        return removed_cnt;
     };
 
-    
+    i64 l = 0, r = L; 
 
+    while (l <= r) {
+        i64 m = (l + r) >> 1;
+        auto num = max_remove_num(m);
+
+        if (num > M) {
+            r = m - 1;
+        } else if (num < M) {
+            l = m + 1;
+        } else {
+            l = m + 1;
+        }
+    }
+
+    cout << r << endl;
 }
