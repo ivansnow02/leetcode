@@ -5,5 +5,11 @@
   //   "go": false,
   //   "java": false
   // },
-  "github.copilot.editor.enableAutoCompletions": false
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.enable": {
+    "cpp": false
+  },
+  "github.copilot.chat.agent.autoFix": false,
+  "github.copilot.chat.agent.runTasks": false,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true
 }
