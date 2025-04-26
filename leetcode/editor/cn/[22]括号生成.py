@@ -30,10 +30,29 @@
 # 
 # 
 # 
-# 
+#
+from typing import List
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
+    def __init__(self):
+        self.str = ''
+        self.ans: List = []
 
+    def backTrace(self, n1, n2):
+        if n1 == 0 and n2 == 0:
+            self.ans.append(self.str)
+        if n1 > 0:
+            self.str += '('
+            self.backTrace(n1 - 1, n2)
+            self.str = self.str[:-1]
+        if n2 > 0:
+            if n2 <= n1: return
+            self.str += ')'
+            self.backTrace(n1, n2 - 1)
+            self.str = self.str[:-1]
+    def generateParenthesis(self, n: int) -> List[str]:
+        self.backTrace(n, n)
+        return self.ans
 # leetcode submit region end(Prohibit modification and deletion)
