@@ -39,7 +39,6 @@ class Solution:
     def __init__(self):
         self.str = ''
         self.ans: List = []
-
     def backTrace(self, n1, n2):
         if n1 == 0 and n2 == 0:
             self.ans.append(self.str)
